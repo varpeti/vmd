@@ -1,0 +1,85 @@
+# .vmd test
+
+## Titles
+
+# Big title (h1)
+## Middle title (h2)
+### Smaller title (h3)
+#### and so on (h4)
+##### and so on (h5)
+###### and so on (h6)
+
+## Paragraphs
+
+test line
+test line2
+test line3
+
+another testline
+
+## Formating
+
+**blod**
+//italic//
+--underline--
+~~deleted~~
+2^^x^^+3
+H__2__O
+This #00ff00 apple# is green.
+This is an @dddddd important@ word.
+
+## Math
+
+#### @ mode have some awsome shortcuts
+functionname(sub;sup;x)
+$$@ int(0; oo; alpha*beta )
+$$ int_{0}^{oo} (alpha*beta)
+
+## Inline math  
+Many symbols can also be displayed using a TeX alternative, $$@ pm sqrt( sum(i=-oo; oo; Delta i) )*sqrt(5) $$ but a preceeding backslash is not required.
+
+#### @ mode
+$$@ lim_{x->oo}(1/x)
+$$@ lim_x->oo_(1/x)
+$$@ lim[x->oo](1/x)
+$$  lim_{x->oo}(1/x)
+
+#### Matrixes are only in normal mode
+$$ [[a,b,c],[d,e,f]]
+
+## Code
+
+```c++
+#include <iostream>
+
+int main(int argc, char *argv[]) {
+
+  /* An annoying "Hello World" example */
+  for (auto i = 0; i < 0xFFFF; i++)
+    cout << "Hello, World!" << endl;
+
+  char c = '\n';
+  unordered_map <string, vector<string> > m;
+  m["key"] = "\\\\"; // this is an error
+
+  return -2e3 + 12l;
+}
+```
+
+## Table
+
+```
+Name    Age
+aaa     23
+bbb     34
+ccc     242
+ddd     934 
+```
+
+## Link
+
+This is a link: link=https://www.w3schools.com/html/html_links.asp;w3link;
+
+## Picture
+
+This is a picture: img=https://www.w3schools.com/html/pulpitrock.jpg;w3pic;

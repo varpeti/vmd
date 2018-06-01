@@ -1,5 +1,7 @@
 # Titles
 
+jump=#Table_of_Contents;Table of Contents;
+
 # Big title (h1)
 ## Middle title (h2)
 ### Smaller title (h3)
@@ -42,7 +44,7 @@ $$ int_{0}^{oo} (alpha*beta)
 @@ int(-oo;-oo; sum(t=-pi/2;pi/2;x^(i*t)) )
 
 ## Inline math
-Many symbols can also be displayed using a TeX alternative, $$@ pm sqrt( sum(i=-oo; oo; Delta i) )*sqrt(5)$ but a preceeding backslash is not required.
+Many symbols can also be displayed using a TeX alternative, $$ pm sqrt( sum(i=-oo; oo; Delta i) )*sqrt(5)$ but a preceeding backslash is not required.
 
 There is another example: @@lim[x->oo] lim[y->oo] (1/(1/x + 1/y))@ not math: (pi/2), math: $$lim_{x->oo} lim_{y->oo} (1/(1/x + 1/y))$ again, not math.
 
@@ -97,3 +99,10 @@ This is a picture: img=https://www.w3schools.com/html/pulpitrock.jpg;w3pic;
 ## Table of Contents
 
 :Table of Contents:30:
+
+    ## Tags are not whitespace sensitiv
+        @@ int(-oo;pi/2,sin(x)) 
+
+==
+
+**Váraljai Péter 2018**

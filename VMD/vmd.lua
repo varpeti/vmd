@@ -41,8 +41,8 @@ function hardmath(str,b)
 end
 
 function premath(str)
-    str = str:gsub("[%$][%$][@](.-)[%$][%$]",function(w) return hardmath(w,true ) end)
-    str = str:gsub("[%$][%$](.-)[%$][%$]",   function(w) return hardmath(w,false) end) 
+    str = str:gsub("[@][@]([^@]-)[@]",    function(w) return hardmath(w,true ) end)
+    str = str:gsub("[%$][%$]([^%$]-)[%$]",function(w) return hardmath(w,false) end) 
     return str
 end
 
@@ -109,7 +109,7 @@ for i,line in pairs(lines) do
     local s = {}
 
     if code then
-        if match(line,"^```(.*)$",s) then 
+        if match(line,"^%s*```(.*)$",s) then 
             print("</code></pre></div></div>") code=false 
         else
             print(line)
@@ -120,38 +120,38 @@ for i,line in pairs(lines) do
         line = line:gsub("[>]","&gt")
 
         --Title
-        if     match(line,"^#%s(.*)$",s)      then 
+        if     match(line,"^%s*#%s(.*)$",s)      then 
             local m = minusS(s[1])
-            aprint("<h1><a id='"..m.."'class='anchor' href='#"..m.."' aria-hidden='true'><span aria-hidden='true' class='octicon octicon-link'></a>"..s[1].."</h1>")
+            aprint("<h1 id='"..m.."'>"..s[1].."</h1>")
             table.insert(tableOfContents,{m,1})
-        elseif match(line,"^##%s(.*)$",s)     then 
+        elseif match(line,"^%s*##%s(.*)$",s)     then 
             local m = minusS(s[1])
-            aprint("<h2><a id='"..m.."'class='anchor' href='#"..m.."' aria-hidden='true'><span aria-hidden='true' class='octicon octicon-link'></a>"..s[1].."</h2>")
+            aprint("<h2 id='"..m.."'>"..s[1].."</h2>")
             table.insert(tableOfContents,{m,2})
-        elseif match(line,"^###%s(.*)$",s)    then 
+        elseif match(line,"^%s*###%s(.*)$",s)    then 
             local m = minusS(s[1])
-            aprint("<h3><a id='"..m.."'class='anchor' href='#"..m.."' aria-hidden='true'><span aria-hidden='true' class='octicon octicon-link'></a>"..s[1].."</h3>")
+            aprint("<h3 id='"..m.."'>"..s[1].."</h3>")
             table.insert(tableOfContents,{m,3})
-        elseif match(line,"^####%s(.*)$",s)   then 
+        elseif match(line,"^%s*####%s(.*)$",s)   then 
             local m = minusS(s[1])
-            aprint("<h4><a id='"..m.."'class='anchor' href='#"..m.."' aria-hidden='true'><span aria-hidden='true' class='octicon octicon-link'></a>"..s[1].."</h4>")
+            aprint("<h4 id='"..m.."'>"..s[1].."</h4>")
             table.insert(tableOfContents,{m,4})
-        elseif match(line,"^#####%s(.*)$",s)  then 
+        elseif match(line,"^%s*#####%s(.*)$",s)  then 
             local m = minusS(s[1])
-            aprint("<h5><a id='"..m.."'class='anchor' href='#"..m.."' aria-hidden='true'><span aria-hidden='true' class='octicon octicon-link'></a>"..s[1].."</h5>")
+            aprint("<h5 id='"..m.."'>"..s[1].."</h5>")
             table.insert(tableOfContents,{m,5})
-        elseif match(line,"^######%s(.*)$",s) then 
+        elseif match(line,"^%s*######%s(.*)$",s) then 
             local m = minusS(s[1])
-            aprint("<h6><a id='"..m.."'class='anchor' href='#"..m.."' aria-hidden='true'><span aria-hidden='true' class='octicon octicon-link'></a>"..s[1].."</h6>")
+            aprint("<h6 id='"..m.."'>"..s[1].."</h6>")
             table.insert(tableOfContents,{m,6})
 
         --Math
-        elseif match(line,"^[%$][%$]@([^$]*)$",s) then aprint("<div class='math'>") tab=tab+1 aprint(hardmath(s[1],true)) tab=tab-1 aprint("</div>")
-        elseif match(line,".*[%$][%$].-[%$][%$].*",s) then aprint(premath(line))
-        elseif match(line,"^[%$][%$]([^$]*)$",s) then aprint("<div class='math'>") tab=tab+1 aprint(hardmath(s[1],false)) tab=tab-1 aprint("</div>")
+        elseif match(line,".*[%$@][%$@]([^$@]-)[%$@].*",s) then aprint(premath(line).."<br>") --inline
+        elseif match(line,"^%s*[@][@]([^@]*)$",s) then aprint("<div class='math'>") tab=tab+1 aprint(hardmath(s[1],true)) tab=tab-1 aprint("</div>")
+        elseif match(line,"^%s*[%$][%$]([^$]*)$",s) then aprint("<div class='math'>") tab=tab+1 aprint(hardmath(s[1],false)) tab=tab-1 aprint("</div>")
     
         --Code
-        elseif match(line,"^```(.*)$",s) then io.write("<div class='img0'><div class='img1'><pre><code class='"..s[1].."'>") code=true
+        elseif match(line,"^%s*```(.*)$",s) then io.write("<div class='img0'><div class='img1'><pre><code class='"..s[1].."'>") code=true
 
         --Link
         elseif match(line,"link=(.-);(.-);",s) then aprint(line:gsub("link=(.-);(.-);","<a href='%1' target='_blank'>%2</a>"))
@@ -161,14 +161,14 @@ for i,line in pairs(lines) do
         elseif match(line,"img=(.-);(.-);",s) then aprint(line:gsub("img=(.-);(.-);","<div class='img0'><div class='img1'><img src='%1' alt='%2'><div class='img2'>%2</div></div></div>"))
 
         --Line
-        elseif match(line,"^[-][-]+$",s) then aprint("<hr>")
-        elseif match(line,"^[=][=]+$",s) then aprint("<hr style='border-top: 5px double;'>")
+        elseif match(line,"^%s*[-][-]+$",s) then aprint("<hr>")
+        elseif match(line,"^%s*[=][=]+$",s) then aprint("<hr style='border-top: 5px double;'>")
 
 
-        elseif match(line,"^:Table of Contents:(%d+):$",s) then printToC(s[1]);
+        elseif match(line,"^%s*:Table of Contents:(%d+):$",s) then printToC(s[1]);
 
         --Paragraph
-        elseif match(line,"^$",s) then tab=1 aprint("</p>") aprint("<p>") tab=2
+        elseif match(line,"^%s*$",s) then tab=1 aprint("</p>") aprint("<p>") tab=2
         else aprint(line.."<br>")
         end
     end

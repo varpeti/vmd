@@ -37,19 +37,19 @@ double
 
 ## @ mode have some awsome shortcuts
 functionname(sub;sup;x)
-$$  int_{0}^{oo} (alpha*beta)
-$$@ int(0; oo; alpha*beta )
-$$@ int(-oo;-oo; sum(t=-pi/2;pi/2;x^(i*t)) )
+$$ int_{0}^{oo} (alpha*beta)
+@@ int(0; oo; alpha*beta )
+@@ int(-oo;-oo; sum(t=-pi/2;pi/2;x^(i*t)) )
 
 ## Inline math
-Many symbols can also be displayed using a TeX alternative, $$@ pm sqrt( sum(i=-oo; oo; Delta i) )*sqrt(5) $$ but a preceeding backslash is not required.
+Many symbols can also be displayed using a TeX alternative, $$@ pm sqrt( sum(i=-oo; oo; Delta i) )*sqrt(5)$ but a preceeding backslash is not required.
 
-There is another example: $$@ lim[x->oo] lim[y->oo] (1/(1/x + 1/y)) $$ not math: (pi/2), math: $$ lim_{x->oo} lim_{y->oo} (1/(1/x + 1/y)) $$ again, not math.
+There is another example: @@lim[x->oo] lim[y->oo] (1/(1/x + 1/y))@ not math: (pi/2), math: $$lim_{x->oo} lim_{y->oo} (1/(1/x + 1/y))$ again, not math.
 
 ## @ mode
-$$@ lim_{x->oo} lim_{y->oo} (1/(1/x + 1/y))
-$$@ lim[x->oo] lim[y->oo] (1/(1/x + 1/y))
-$$  lim_{x->oo} lim_{y->oo} (1/(1/x + 1/y))
+@@ lim_{x->oo} lim_{y->oo} (1/(1/x + 1/y))
+@@ lim[x->oo] lim[y->oo] (1/(1/x + 1/y))
+$$ lim_{x->oo} lim_{y->oo} (1/(1/x + 1/y))
 
 ## Matrixes are only in normal mode
 $$ [[a,b,c],[d,e,f]]

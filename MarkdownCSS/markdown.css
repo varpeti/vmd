@@ -7,6 +7,33 @@
     box-sizing: border-box;
 }
 
+.math 
+{ 
+    text-align: center; 
+}
+img 
+{ 
+    max-width: 100%; 
+    height: auto; 
+}
+div.img0
+{
+    text-align: center;
+}
+div.img1
+{
+    width: auto;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: inline-block;
+    text-align: left; 
+}
+div.img2 
+{
+    text-align: center;
+    padding: 10px 20px;
+}
+
 body {
     width: 980px;
     margin-right: auto;

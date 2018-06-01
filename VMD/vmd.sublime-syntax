@@ -1,9 +1,9 @@
 %YAML 1.2
 ---
-name: Lua
-comment: "Lua Syntax: version 0.8"
+name: VMD
+comment: "VMD Syntax"
 file_extensions:
-  - lua
+  - vmd
 scope: source.vmd
 contexts:
   main:
@@ -29,7 +29,7 @@ contexts:
           pop: true
     - match: '(0[xX][0-9A-Fa-f]+)|(#[0-9A-Fa-f]+)|([0-9\.]+)|'
       scope: constant.numeric.vmd
-    - match: '(^(\$\$@)([^\$]*))$|^(\$\$)([^\$]*)$'
+    - match: '(^\s*(\$\$@)([^\$]*))$|^(\$\$)([^\$]*)$'
       captures:
         2: keyword.operator.vmd
         3: constant.numeric.vmd
@@ -52,7 +52,7 @@ contexts:
           captures:
             0: punctuation.definition.comment.vmd
           pop: true
-    - match: '^(#+) (.*)'
+    - match: '^\s*(#+) (.*)'
       captures:
         1: keyword.operator.vmd
         2: string.quoted.single.vdm
@@ -66,7 +66,7 @@ contexts:
       scope: support.function.vmd
       captures:
         1: constant.numeric.vmd
-    - match: '^(--+)$|^(==+)$'
+    - match: '^\s*(--+)$|^(==+)$'
       scope: keyword.operator.vmd
     - match: '\*\*'
       captures:

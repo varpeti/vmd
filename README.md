@@ -4,4 +4,4 @@
 
 ![test.vmd](./test.vmd "test.vmd")
 
-![out.html](./out.html "out.html")
+![test.html](https://htmlpreview.github.io/?https://github.com/varpeti/vmd/blob/master/test.html "test.html")

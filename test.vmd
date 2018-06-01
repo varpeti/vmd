@@ -1,6 +1,4 @@
-# .vmd test
-
-## Titles
+# Titles
 
 # Big title (h1)
 ## Middle title (h2)
@@ -9,7 +7,7 @@
 ##### and so on (h5)
 ###### and so on (h6)
 
-## Paragraphs
+# Paragraphs
 
 test line
 test line2
@@ -17,10 +15,10 @@ test line3
 
 another testline
 
-## Formating
+# Formating
 
 **blod**
-//italic//
+This //text// is //italic//.
 --underline--
 ~~deleted~~
 2^^x^^+3
@@ -28,26 +26,36 @@ H__2__O
 This #00ff00 apple# is green.
 This is an @dddddd important@ word.
 
-## Math
+# Lines
 
-#### @ mode have some awsome shortcuts
+single
+--
+double
+==
+
+# Math
+
+## @ mode have some awsome shortcuts
 functionname(sub;sup;x)
+$$  int_{0}^{oo} (alpha*beta)
 $$@ int(0; oo; alpha*beta )
-$$ int_{0}^{oo} (alpha*beta)
+$$@ int(-oo;-oo; sum(t=-pi/2;pi/2;x^(i*t)) )
 
-## Inline math  
+## Inline math
 Many symbols can also be displayed using a TeX alternative, $$@ pm sqrt( sum(i=-oo; oo; Delta i) )*sqrt(5) $$ but a preceeding backslash is not required.
 
-#### @ mode
-$$@ lim_{x->oo}(1/x)
-$$@ lim_x->oo_(1/x)
-$$@ lim[x->oo](1/x)
-$$  lim_{x->oo}(1/x)
+There is another example: $$@ lim[x->oo] lim[y->oo] (1/(1/x + 1/y)) $$ not math: (pi/2), math: $$ lim_{x->oo} lim_{y->oo} (1/(1/x + 1/y)) $$ again, not math.
 
-#### Matrixes are only in normal mode
+## @ mode
+$$@ lim_{x->oo} lim_{y->oo} (1/(1/x + 1/y))
+$$@ lim[x->oo] lim[y->oo] (1/(1/x + 1/y))
+$$  lim_{x->oo} lim_{y->oo} (1/(1/x + 1/y))
+
+## Matrixes are only in normal mode
 $$ [[a,b,c],[d,e,f]]
 
-## Code
+
+# Code
 
 ```c++
 #include <iostream>
@@ -66,7 +74,7 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-## Table
+# Table
 
 ```
 Name    Age
@@ -80,6 +88,12 @@ ddd     934
 
 This is a link: link=https://www.w3schools.com/html/html_links.asp;w3link;
 
-## Picture
+This is a jump: jump=#Titles;Top;
+
+# Picture
 
 This is a picture: img=https://www.w3schools.com/html/pulpitrock.jpg;w3pic;
+
+## Table of Contents
+
+:Table of Contents:30:

@@ -1,0 +1,124 @@
+%YAML 1.2
+---
+name: Lua
+comment: "Lua Syntax: version 0.8"
+file_extensions:
+  - lua
+scope: source.vmd
+contexts:
+  main:
+    - match: '(#)([0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f])'
+      captures:
+        1: keyword.operator.vmd
+        2: constant.numeric.vmd
+      push:
+        - meta_scope: string.literal
+        - match: '(#)'
+          captures:
+            0: keyword.operator.vmd
+          pop: true
+    - match: '(@)([0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f])'
+      captures:
+        1: keyword.operator.vmd
+        2: constant.numeric.vmd
+      push:
+        - meta_scope: string.literal
+        - match: '(@)'
+          captures:
+            0: keyword.operator.vmd
+          pop: true
+    - match: '(0[xX][0-9A-Fa-f]+)|(#[0-9A-Fa-f]+)|([0-9\.]+)|'
+      scope: constant.numeric.vmd
+    - match: '(^(\$\$@)([^\$]*))$|^(\$\$)([^\$]*)$'
+      captures:
+        2: keyword.operator.vmd
+        3: constant.numeric.vmd
+        4: keyword.operator.vmd
+        5: constant.numeric.vmd
+    - match: '((\$\$@)([^\$]*)(\$\$))|(\$\$)([^\$]*)(\$\$)'
+      captures:
+        2: keyword.operator.vmd
+        3: constant.numeric.vmd
+        4: keyword.operator.vmd
+        5: keyword.operator.vmd
+        6: constant.numeric.vmd
+        7: keyword.operator.vmd
+    - match: '```'
+      captures:
+        0: punctuation.definition.comment.vmd
+      push:
+        - meta_scope: comment.block.vmd
+        - match: '```'
+          captures:
+            0: punctuation.definition.comment.vmd
+          pop: true
+    - match: '^(#+) (.*)'
+      captures:
+        1: keyword.operator.vmd
+        2: string.quoted.single.vdm
+    - match: '(link|jump|img)=([^;]*);([^;]*);'
+      scope: support.function.vmd
+      captures:
+        1: support.function.vmd
+        2: string.quoted.single.vdm
+        3: string.quoted.single.vdm
+    - match: ':Table of Contents:([0-9]+):'
+      scope: support.function.vmd
+      captures:
+        1: constant.numeric.vmd
+    - match: '^(--+)$|^(==+)$'
+      scope: keyword.operator.vmd
+    - match: '\*\*'
+      captures:
+        0: keyword.operator.vmd
+      push:
+        - meta_scope: string.literal
+        - match: '\*\*'
+          captures:
+            0: keyword.operator.vmd
+          pop: true
+    - match: '//'
+      captures:
+        0: keyword.operator.vmd
+      push:
+        - meta_scope: string.literal
+        - match: '//'
+          captures:
+            0: keyword.operator.vmd
+          pop: true
+    - match: '--'
+      captures:
+        0: keyword.operator.vmd
+      push:
+        - meta_scope: string.literal
+        - match: '--'
+          captures:
+            0: keyword.operator.vmd
+          pop: true
+    - match: '~~'
+      captures:
+        0: keyword.operator.vmd
+      push:
+        - meta_scope: string.literal
+        - match: '~~'
+          captures:
+            0: keyword.operator.vmd
+          pop: true
+    - match: '\^\^'
+      captures:
+        0: keyword.operator.vmd
+      push:
+        - meta_scope: string.literal
+        - match: '\^\^'
+          captures:
+            0: keyword.operator.vmd
+          pop: true
+    - match: '__'
+      captures:
+        0: keyword.operator.vmd
+      push:
+        - meta_scope: string.literal
+        - match: '__'
+          captures:
+            0: keyword.operator.vmd
+          pop: true
